@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>blog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">blog</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'blog' %}">Blog</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+  </div>
+</nav>
+  
+<div class="container">
+  <h3>Blog</h3>
+  <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+  {% for article in blog_list %}
+  <div class="card">
+    <img src="{{article.img.url}}" width="450px" alt="{{ article.name }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ article.name }}</h5>
+      <p class="card-text">{{ article.body }}</p>
+      <a href="{{ article.GetUrl }}" class="btn btn-submit">Read More</a>
+      <hr>
+      <br>
+
+      <!-- <h5 class="card-title">{{ article.User }}</h5> -->
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+</body>
+</html>
